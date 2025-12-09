@@ -40,6 +40,7 @@ func main() {
 		}
 		mp[k^sum] = i
 	}
+	// 能选择的最多区间，已经按照R排序好了
 	res := 0
 	curR := math.MinInt
 	for i := 0; i < len(lr); i++ {
