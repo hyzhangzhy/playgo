@@ -10,9 +10,10 @@ io 为 acm 模式的输入输出模板。
 
 ### 位运算的trick
 
-二进制数t的最低位 = t & -t
+二进制数t的最低位(lowbit) = t & -t
 因为补码: −t=∼t+1
 证明: 
 ![alt text](image.png)
 
+删除lowbit: t & (t - 1) 或者 t ^ (lowbit(t))
 
