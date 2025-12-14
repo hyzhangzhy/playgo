@@ -35,12 +35,17 @@ func speakCurrentTime() {
 	minute := now.Minute()
 
 	var period string
-	if hour < 12 {
+	switch {
+	case hour >= 0 && hour < 6:
+		period = "凌晨"
+	case hour >= 6 && hour < 11:
 		period = "上午"
-	} else if hour == 12 {
+	case hour >= 11 && hour < 13:
 		period = "中午"
-	} else {
+	case hour >= 13 && hour < 18:
 		period = "下午"
+	default:
+		period = "晚上"
 	}
 
 	speakHour := hour
