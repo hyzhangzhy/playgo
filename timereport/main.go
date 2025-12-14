@@ -34,33 +34,11 @@ func speakCurrentTime() {
 	hour := now.Hour()
 	minute := now.Minute()
 
-	var period string
-	switch {
-	case hour >= 0 && hour < 6:
-		period = "凌晨"
-	case hour >= 6 && hour < 11:
-		period = "上午"
-	case hour >= 11 && hour < 13:
-		period = "中午"
-	case hour >= 13 && hour < 18:
-		period = "下午"
-	default:
-		period = "晚上"
-	}
-
-	speakHour := hour
-	if hour > 12 {
-		speakHour = hour - 12
-	}
-	if speakHour == 0 {
-		speakHour = 12
-	}
-
 	var text string
 	if minute == 0 {
-		text = fmt.Sprintf("现在时间是 %s %d点整", period, speakHour)
+		text = fmt.Sprintf("现在时间是 %d点整", hour)
 	} else {
-		text = fmt.Sprintf("现在时间是 %s %d点%d分", period, speakHour, minute)
+		text = fmt.Sprintf("现在时间是 %d点%d分", hour, minute)
 	} // 调用 Windows PowerShell 进行语音合成
 	// 注意：这需要 Windows 环境
 	cmd := exec.Command("powershell", "-Command", fmt.Sprintf(`Add-Type -AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('%s')`, text))
