@@ -34,6 +34,7 @@ func (m *MP) Set(k string, v int) {
 //
 
 //大的key删除导致阻塞
+//git如何把一个commit转移到另外一个分支
 
 type ListNode struct {
 	Val  int
